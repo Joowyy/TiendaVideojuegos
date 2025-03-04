@@ -62,6 +62,7 @@ public class Tienda {
 		clientes.add(new Normal("3984VCM", "Manolo", 0.0, "manolindiorese@example.com"));
 		clientes.add(new Normal("0012LLQ", "Julia", 0.0, "julialachulaychunga@example.com"));
 		clientes.add(new Normal("7829MMD", "Montoya", 0.0, "montoyabrilla@example.com"));
+		clientes.add(new Normal("2264FEA", "William", 0.0, "williambarbosa@example.com"));
 		clientes.add(new VIP("4932DKW", "Candela", 0.0, "VIP2025"));
 		clientes.add(new VIP("8475MTN", "Daniel", 0.0, "10% en alquileres"));
 		clientes.add(new VIP("9284LFE", "¿alguien?", 0.0, "VIPGOLD-2024"));
@@ -102,34 +103,34 @@ public class Tienda {
 		
 		for (int k = 0; k < 10; k++) {
 			if (k == 0) {
-				alquileres.add(new Alquiler(String.valueOf(k), clientes, 29.99, videojuegos));
+				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 29.99, videojuegos));
 			}
 			if (k == 1) {
-				alquileres.add(new Alquiler(String.valueOf(k), clientes, 7.99, videojuegos));
+				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 7.99, videojuegos));
 			}
 			if (k == 2) {
-				alquileres.add(new Alquiler(String.valueOf(k), clientes, 9.26, videojuegos));
+				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 9.26, videojuegos));
 			}
 			if (k == 3) {
-				alquileres.add(new Alquiler(String.valueOf(k), clientes, 17.2, videojuegos));
+				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 17.2, videojuegos));
 			}
 			if (k == 4) {
-				alquileres.add(new Alquiler(String.valueOf(k), clientes, 52.99, videojuegos));
+				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 52.99, videojuegos));
 			}
 			if (k == 5) {
-				alquileres.add(new Alquiler(String.valueOf(k), clientes, 4.12, videojuegos));
+				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 4.12, videojuegos));
 			}
 			if (k == 6) {
-				alquileres.add(new Alquiler(String.valueOf(k), clientes, 12.67, videojuegos));
+				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 12.67, videojuegos));
 			}
 			if (k == 7) {
-				alquileres.add(new Alquiler(String.valueOf(k), clientes, 9.99, videojuegos));
+				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 9.99, videojuegos));
 			}
 			if (k == 8) {
-				alquileres.add(new Alquiler(String.valueOf(k), clientes, 31.19, videojuegos));
+				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 31.19, videojuegos));
 			}
 			if (k == 9) {
-				alquileres.add(new Alquiler(String.valueOf(k), clientes, 18.23, videojuegos));
+				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 18.23, videojuegos));
 			}
 		}
 

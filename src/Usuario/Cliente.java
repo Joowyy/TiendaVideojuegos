@@ -40,9 +40,10 @@ public abstract class Cliente {
 	}
 	
 //	=========================== METODOS ===========================
-	public boolean disminuirSaldoCuenta() {
+	public void disminuirSaldoCuenta() {
 		
-		return false;
+		
+		
 	}
 	
 	public void incrementarSaldoCuenta() {

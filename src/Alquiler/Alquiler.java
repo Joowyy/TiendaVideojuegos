@@ -8,7 +8,7 @@ public class Alquiler {
 
 //	=========================== ATRIBUTOS ===========================
 	private String codAlquiler;
-	private ArrayList<Cliente> clientes = new ArrayList<Cliente>();
+	private Cliente cliente;
 	private double precioAlquiler;
 	private ArrayList<Videojuego> videojuegos = new ArrayList<Videojuego>();
 	
@@ -16,9 +16,9 @@ public class Alquiler {
 	public Alquiler () {
 		
 	}
-	public Alquiler (String codAlquiler, ArrayList<Cliente> clientes, double precioAlquiler, ArrayList<Videojuego> videojuegos) {
+	public Alquiler (String codAlquiler, Cliente cliente, double precioAlquiler, ArrayList<Videojuego> videojuegos) {
 		this.codAlquiler = codAlquiler;
-		this.clientes = clientes;
+		this.cliente = cliente;
 		this.precioAlquiler = precioAlquiler;
 		this.videojuegos = videojuegos;
 	}
@@ -31,11 +31,11 @@ public class Alquiler {
 		this.codAlquiler = codAlquiler;
 	}
 	
-	public ArrayList<Cliente> getClientes() {
-		return clientes;
+	public Cliente getcliente() {
+		return cliente;
 	}
-	public void setClientes(ArrayList<Cliente> clientes) {
-		this.clientes = clientes;
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 	
 	public double getPrecioAlquiler() {
@@ -59,7 +59,7 @@ public class Alquiler {
 			codAlquiler = String.valueOf(i);
 			System.out.println("Codigo alquiler -> " + codAlquiler);
 			System.out.println("Precio alquiler -> " + precioAlquiler);
-			System.out.println("Cliente alquiler -> " + clientes);
+			System.out.println("Cliente alquiler -> " + cliente);
 			System.out.println("Juegos en alquiler -> " + videojuegos);
 		}
 
@@ -68,8 +68,8 @@ public class Alquiler {
 	@Override
 	public String toString () {
 		
-		return "Codigo alquiler -> " + codAlquiler + "\n\tPrecio alquiler -> " + precioAlquiler + "\n\tCliente alquiler -> " + clientes + "\n\tJuegos en alquiler -> " + videojuegos;
-	
+		return "Alq-" + codAlquiler;
+		
 	}
-	
+
 }
