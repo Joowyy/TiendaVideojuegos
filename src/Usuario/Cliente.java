@@ -1,5 +1,7 @@
 package Usuario;
 
+import java.util.Scanner;
+
 public abstract class Cliente {
 
 //	=========================== ATRIBUTOS ===========================
@@ -42,7 +44,26 @@ public abstract class Cliente {
 //	=========================== METODOS ===========================
 	public void disminuirSaldoCuenta() {
 		
+		Scanner sc = new Scanner (System.in);
+		boolean pagado = false;
 		
+		while (pagado != true) {
+		
+			System.out.println("Cuanto dinero deseas introducir");
+			double saldoUsuario = sc.nextDouble();
+			
+//			CORRECCION DE ERROR
+			if (saldoUsuario <= 0) {
+				
+				System.out.println("No puedes agregar un saldo negativo bolo!");
+				
+			} else {
+				
+				this.saldoCuenta += saldoUsuario;
+				
+			}
+		
+		}
 		
 	}
 	

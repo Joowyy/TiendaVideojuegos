@@ -47,7 +47,7 @@ public class Tienda {
 	public void mostrarTienda () {
 		
 		System.out.println("\nNombre -> " + nombreTienda);
-		System.out.println("Alquileres -> " + alquileres);
+		System.out.println("Alquileres -> " + alquileres + "\n");
 		
 	}
 	
@@ -56,6 +56,7 @@ public class Tienda {
 		ArrayList<Cliente> clientes = new ArrayList<Cliente>();
 		ArrayList<Videojuego> videojuegos = new ArrayList<Videojuego>();
 		
+//		CREAMOS LOS CLIENTES
 		clientes.add(new Normal("4583KRN", "Francisco", 0.0, "francisco3242@example.com"));
 		clientes.add(new Normal("2957KEQ", "Maria", 0.0, "mariasanchez5@example.com"));
 		clientes.add(new Normal("0658RNY", "Juan", 0.0, "juandedios777@example.com"));
@@ -67,6 +68,7 @@ public class Tienda {
 		clientes.add(new VIP("8475MTN", "Daniel", 0.0, "10% en alquileres"));
 		clientes.add(new VIP("9284LFE", "¿alguien?", 0.0, "VIPGOLD-2024"));
 		
+//		CREAMOS LOS VIDEJUEGOS
 		for (int j = 0; j < 15; j++) {
 			if (j == 0) {
 		        videojuegos.add(new Videojuego(String.valueOf(j), "The Legend of Zelda", false));
@@ -101,6 +103,7 @@ public class Tienda {
 		    }
 		}
 		
+//		CREAMOS LOS ALQUILERES
 		for (int k = 0; k < 10; k++) {
 			if (k == 0) {
 				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 29.99, videojuegos));
@@ -134,7 +137,7 @@ public class Tienda {
 			}
 		}
 
-//		Creamos la tienda
+//		CREAMOS LA TIENDA
 		Tienda tiendaCreada = new Tienda("Jowy's RuneShop", alquileres);
 		
 		return tiendaCreada;
