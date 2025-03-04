@@ -26,6 +26,7 @@ public class Main {
 				
 			case '2':
 				
+				Alquiler clienteSeleccionado = elegirCliente(tiendaJowy);
 				break;
 				
 			case '3':
@@ -59,6 +60,8 @@ public class Main {
 			return a;
 			
 		}
+		
+		System.out.println("");
 		
 		return null;
 	}

@@ -5,9 +5,9 @@ import java.util.Scanner;
 public abstract class Cliente {
 
 //	=========================== ATRIBUTOS ===========================
-	private String DNI;
-	private String nombre;
-	private double saldoCuenta;
+	protected String DNI;
+	protected String nombre;
+	protected double saldoCuenta;
 	
 //	=========================== CONSTRUCTORES ===========================
 	public Cliente () {

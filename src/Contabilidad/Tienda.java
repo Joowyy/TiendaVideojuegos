@@ -20,7 +20,7 @@ public class Tienda {
 	}
 	public Tienda (String nombreTienda, ArrayList<Alquiler> alquileres) {
 		this.nombreTienda = nombreTienda;
-		this.alquileres = alquileres;
+		Tienda.alquileres = alquileres;
 	}
 	
 //	=========================== GETTERS & SETTERS ===========================
@@ -35,7 +35,7 @@ public class Tienda {
 		return alquileres;
 	}
 	public void setAlquileres(ArrayList<Alquiler> alquileres) {
-		this.alquileres = alquileres;
+		Tienda.alquileres = alquileres;
 	}
 	
 //	=========================== METODOS ===========================

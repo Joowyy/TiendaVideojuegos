@@ -29,4 +29,11 @@ public class Normal extends Cliente {
 		
 	}
 	
+	@Override
+	public String toString () {
+		
+		return nombre;
+		
+	}
+	
 }
