@@ -55,10 +55,21 @@ public class Alquiler {
 //	=========================== METODOS ===========================
 	public void mostrarAlquiler () {
 		
-		System.out.println("Codigo alquiler -> " + codAlquiler);
-		System.out.println("Precio alquiler -> " + precioAlquiler);
-		System.out.println("Cliente alquiler -> " + clientes);
-		System.out.println("Juegos en alquiler -> " + videojuegos);
-		
+		for (int i = 0; i < 10; i++) {
+			codAlquiler = String.valueOf(i);
+			System.out.println("Codigo alquiler -> " + codAlquiler);
+			System.out.println("Precio alquiler -> " + precioAlquiler);
+			System.out.println("Cliente alquiler -> " + clientes);
+			System.out.println("Juegos en alquiler -> " + videojuegos);
+		}
+
 	}
+	
+	@Override
+	public String toString () {
+		
+		return "Codigo alquiler -> " + codAlquiler + "\n\tPrecio alquiler -> " + precioAlquiler + "\n\tCliente alquiler -> " + clientes + "\n\tJuegos en alquiler -> " + videojuegos;
+	
+	}
+	
 }
