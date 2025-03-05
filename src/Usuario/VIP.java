@@ -27,4 +27,12 @@ public class VIP extends Cliente {
 	public void mostrarCliente () {
 		
 	}
+	
+	@Override
+	public String toString () {
+		
+		return nombre;
+		
+	}
+	
 }

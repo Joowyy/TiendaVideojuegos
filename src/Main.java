@@ -15,7 +15,7 @@ public class Main {
 
 		do {
 			
-			System.out.println("BIENVENIDO A JOWY's\n1. Mostrar tienda\n2.Ver cliente\n3. Ingresar saldo\n4. Retirar saldo");
+			System.out.println("BIENVENIDO A JOWY's\n1. Mostrar tienda\n2. Añadir alquiler\n3. Ingresar saldo\n4. Retirar saldo");
 			
 			switch (opc = sc.nextLine().charAt(0)) {
 			
@@ -26,7 +26,7 @@ public class Main {
 				
 			case '2':
 				
-				Alquiler clienteSeleccionado = elegirCliente(tiendaJowy);
+				tiendaJowy.añadirAlquiler();
 				break;
 				
 			case '3':
@@ -54,14 +54,26 @@ public class Main {
 	
 	public static Alquiler elegirCliente (Tienda tiendaJowy) {
 		
-		for (Alquiler a : tiendaJowy.getAlquileres()) {
+		Scanner sc = new Scanner (System.in);
+		
+		for (Alquiler a1 : tiendaJowy.getAlquileres()) {
 			
-			a.mostrarAlquiler();
-			return a;
+			a1.mostrarAlquiler();
 			
 		}
 		
-		System.out.println("");
+		System.out.println("Dime el nombre de cliente que deseas ver");
+		String nombreCliente = sc.nextLine();
+		
+		for (Alquiler a2 : tiendaJowy.getAlquileres()) {
+			
+			if (a2.getcliente().equals(nombreCliente)) {
+				
+				
+				
+			}
+			
+		}
 		
 		return null;
 	}

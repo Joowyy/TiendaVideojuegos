@@ -41,6 +41,12 @@ public class Tienda {
 //	=========================== METODOS ===========================
 	public boolean añadirAlquiler () {
 		
+		for (int i = 0; i < alquileres.size(); i++) {
+
+			//alquileres.add(new Alquiler(String.valueOf(alquileres.size() + 1), clienteUsuario, 29.99, videojuegos.get(k)));
+
+		}
+		
 		return true;
 	}
 	
@@ -106,34 +112,34 @@ public class Tienda {
 //		CREAMOS LOS ALQUILERES
 		for (int k = 0; k < 10; k++) {
 			if (k == 0) {
-				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 29.99, videojuegos));
+				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 29.99, videojuegos.get(k)));
 			}
 			if (k == 1) {
-				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 7.99, videojuegos));
+				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 7.99, videojuegos.get(k)));
 			}
 			if (k == 2) {
-				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 9.26, videojuegos));
+				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 9.26, videojuegos.get(k)));
 			}
 			if (k == 3) {
-				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 17.2, videojuegos));
+				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 17.2, videojuegos.get(k)));
 			}
 			if (k == 4) {
-				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 52.99, videojuegos));
+				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 52.99, videojuegos.get(k)));
 			}
 			if (k == 5) {
-				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 4.12, videojuegos));
+				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 4.12, videojuegos.get(k)));
 			}
 			if (k == 6) {
-				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 12.67, videojuegos));
+				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 12.67, videojuegos.get(k)));
 			}
 			if (k == 7) {
-				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 9.99, videojuegos));
+				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 9.99, videojuegos.get(k)));
 			}
 			if (k == 8) {
-				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 31.19, videojuegos));
+				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 31.19, videojuegos.get(k)));
 			}
 			if (k == 9) {
-				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 18.23, videojuegos));
+				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 18.23, videojuegos.get(k)));
 			}
 		}
 

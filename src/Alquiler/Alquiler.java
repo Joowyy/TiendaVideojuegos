@@ -10,17 +10,17 @@ public class Alquiler {
 	private String codAlquiler;
 	private Cliente cliente;
 	private double precioAlquiler;
-	private ArrayList<Videojuego> videojuegos = new ArrayList<Videojuego>();
+	private Videojuego videojuego;
 	
 //	=========================== CONSTRUCTORES ===========================
 	public Alquiler () {
 		
 	}
-	public Alquiler (String codAlquiler, Cliente cliente, double precioAlquiler, ArrayList<Videojuego> videojuegos) {
+	public Alquiler (String codAlquiler, Cliente cliente, double precioAlquiler, Videojuego videojuego) {
 		this.codAlquiler = codAlquiler;
 		this.cliente = cliente;
 		this.precioAlquiler = precioAlquiler;
-		this.videojuegos = videojuegos;
+		this.videojuego = videojuego;
 	}
 	
 //	=========================== GETTERS & SETTERS ===========================
@@ -45,20 +45,20 @@ public class Alquiler {
 		this.precioAlquiler = precioAlquiler;
 	}
 	
-	public ArrayList<Videojuego> getVideojuegos() {
-		return videojuegos;
+	public Videojuego getVideojuego() {
+		return videojuego;
 	}
-	public void setVideojuegos(ArrayList<Videojuego> videojuegos) {
-		this.videojuegos = videojuegos;
+	public void setVideojuegos(Videojuego videojuego) {
+		this.videojuego = videojuego;
 	}
 	
 //	=========================== METODOS ===========================
 	public void mostrarAlquiler () {
 
-			System.out.println("Codigo alquiler -> " + codAlquiler);
+			System.out.println("\nCodigo alquiler -> " + codAlquiler);
 			System.out.println("Precio alquiler -> " + precioAlquiler);
 			System.out.println("Cliente alquiler -> " + cliente);
-			System.out.println("Juegos en alquiler -> " + videojuegos);
+			System.out.println("Juego en alquiler -> " + videojuego + "\n");
 
 	}
 	

@@ -48,4 +48,11 @@ public class Videojuego {
 		
 	}
 	
+	@Override
+	public String toString () {
+		
+		return nombre;
+		
+	}
+	
 }
