@@ -1,6 +1,7 @@
 package Contabilidad;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 import Alquiler.Alquiler;
 import Alquiler.Videojuego;
@@ -43,13 +44,155 @@ public class Tienda {
 //	=========================== METODOS ===========================
 	public boolean añadirAlquiler () {
 		
-		for (int i = 0; i < alquileres.size(); i++) {
+		Scanner sc = new Scanner(System.in);
+		ArrayList<Videojuego> videojuegos = GestionVideojuego.getVideojuegos();
+		ArrayList<Cliente> clientes = GestionCliente.getClientes();
+		boolean alquilerAñadido = false;
 
-			//alquileres.add(new Alquiler(String.valueOf(alquileres.size() + 1), clienteUsuario, 29.99, videojuegos.get(k)));
+		while (alquilerAñadido != true) {
+			
+			System.out.println("¿Desea alguilar algún juego? y/n");
+			char respuesta = sc.nextLine().charAt(0);
+			
+			if (respuesta == 'y') {
+				
+				System.out.println("\nDebemos recopilar algo de información personales antes que nada\nProporcionanos la siguiente informacion ->");
+				System.out.println("\n¿Pagarás por el VIP? y/n");
+				char vipUsuario = sc.nextLine().charAt(0);
+				
+				if (vipUsuario == 'y' ) {
+					
+					Cliente clienteNuevoVIP = null;
+					String dniUsuarioVIP = null;
+					String nombreUsuarioVIP = null;
 
+					System.out.println("Introduce tu DNI: ");
+					dniUsuarioVIP = sc.nextLine();
+
+					if (dniUsuarioVIP.length() >= 9 || dniUsuarioVIP.length() <= 0) {
+
+						System.out.println("Introduce un DNI válido");
+						break;
+
+					System.out.println("Introduce tu nombre: ");
+					nombreUsuarioVIP = sc.nextLine();
+
+					clienteNuevoVIP = new VIP(dniUsuarioVIP, nombreUsuarioVIP, 0.0, "VIP-2025");
+					clientes.add(clienteNuevoVIP);
+					
+					System.out.println("Estos son los videojuegos actualmente en stock -> ");
+					
+					for (Videojuego j1 : videojuegos) {
+						
+						if (j1.getStock() == true) {
+						
+							j1.mostrarVideojuego();
+						
+						}
+						
+					}
+					
+					System.out.println("¿Cuanto costará el alquier?");
+					double alquilerCosto = sc.nextDouble();
+					System.out.println("Dime el codigo del juego que quieres alquilar -> ");
+					String codUsuario = sc.nextLine();
+					
+					for (Videojuego j2 : videojuegos) {
+						
+						if (j2.getCodJuego().equals(codUsuario)) {
+						
+							j2.setStock(false);
+							Alquiler alquilerNuevo = new Alquiler(String.valueOf(alquileres.size()), clienteNuevoVIP, alquilerCosto, j2);
+							alquileres.add(alquilerNuevo);
+							alquilerAñadido = true;
+						
+						} else {
+							
+							System.out.println("No existe ese codigo\n");
+							
+						}
+						
+					}
+					
+				} else if (vipUsuario == 'n') {
+					
+					Cliente clienteNuevo = null;
+					String dniUsuario = null;
+					String nombreUsuario = null;
+					String emailUsuario = null;
+
+					System.out.println("Introduce tu DNI: ");
+					dniUsuario = sc.nextLine();
+
+					if (dniUsuario.length() >= 9 || dniUsuario.length() <= 0) {
+
+						System.out.println("Introduce un DNI válido\n");
+						break;
+
+					System.out.println("Introduce tu nombre: ");
+					nombreUsuario = sc.nextLine();
+						
+					System.out.println("Introduce tu correo: ");
+					emailUsuario = sc.nextLine();
+
+					clienteNuevo = new Normal(dniUsuario, nombreUsuario, 0.0, emailUsuario);
+					clientes.add(clienteNuevo);
+						
+					System.out.println("Estos son los videojuegos actualmente en stock -> ");
+					
+					for (Videojuego j1 : videojuegos) {
+						
+						if (j1.getStock() == true) {
+						
+							j1.mostrarVideojuego();
+						
+						}
+						
+					}
+					
+					System.out.println("¿Cuanto costará el alquier?");
+					double alquilerCosto = sc.nextDouble();
+					sc.nextLine();
+					System.out.println("Dime el codigo del juego que quieres alquilar -> ");
+					String codUsuario = sc.nextLine();
+					
+					for (Videojuego j2 : videojuegos) {
+						
+						if (j2.getCodJuego().equals(codUsuario)) {
+						
+							j2.setStock(false);
+							Alquiler alquilerNuevo = new Alquiler(String.valueOf(alquileres.size()), clienteNuevo, alquilerCosto, j2);
+							alquileres.add(alquilerNuevo);
+							alquilerAñadido = true;
+						
+						} else {
+							
+							System.out.println("No existe ese codigo\n");
+							
+						}
+						
+					}
+					
+				} else {
+					
+					System.out.println();
+					
+				}
+
+			} else if (respuesta == 'n') {
+				
+				System.out.println("De acuerdo volvemos atrás.\n");
+				break;
+				
+			} else {
+				
+				System.out.println("Introduce un carácter válido.");
+				
+			}
+			
 		}
 		
-		return true;
+		return alquilerAñadido;
 	}
 	
 	public void mostrarTienda () {

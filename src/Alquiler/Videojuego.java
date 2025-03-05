@@ -40,11 +40,11 @@ public class Videojuego {
 	}
 	
 //	=========================== METODOS ===========================
-	public void mostrarVidejuego () {
+	public void mostrarVideojuego () {
 		
-		System.out.println("Codigo juego -> " + codJuego);
+		System.out.println("\nCodigo juego -> " + codJuego);
 		System.out.println("Nombre juego -> " + nombre);
-		System.out.println("Stock del juego -> " + stock);
+		System.out.println("Stock del juego -> " + stock + "\n");
 		
 	}
 	

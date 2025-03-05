@@ -1,9 +1,10 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import Alquiler.Alquiler;
+import Alquiler.Videojuego;
 import Contabilidad.Tienda;
 import Gestion.GestionCliente;
+import Gestion.GestionVideojuego;
 import Usuario.Cliente;
 
 public class Main {
@@ -17,7 +18,7 @@ public class Main {
 
 		do {
 			
-			System.out.println("BIENVENIDO A JOWY's\n1. Mostrar tienda\n2. Añadir alquiler\n3. Ingresar saldo\n4. Retirar saldo\n5. Ver cliente");
+			System.out.println("BIENVENIDO A JOWY's\n1. Mostrar tienda\n2. Añadir alquiler\n3. Ingresar saldo\n4. Retirar saldo\n5. Ver cliente\n6. Ver videojuegos");
 			
 			switch (opc = sc.nextLine().charAt(0)) {
 			
@@ -42,7 +43,12 @@ public class Main {
 				
 			case '5':
 				
-				Cliente clienteSeleccionado = elegirCliente(tiendaJowy);
+				Cliente clienteSeleccionado5 = elegirCliente();
+				break;
+				
+			case '6':
+				
+				Videojuego videojuegoSeleccionado = elegirVideojuego();
 				break;
 				
 			default:
@@ -55,26 +61,54 @@ public class Main {
 		
 	}
 	
-	public static Cliente elegirCliente (Tienda tiendaJowy) {
+	public static Cliente elegirCliente () {
 		
 		ArrayList<Cliente> clientes = GestionCliente.getClientes();
 		Scanner sc = new Scanner (System.in);
 		
-		for (Alquiler a1 : tiendaJowy.getAlquileres()) {
-			
-			a1.mostrarAlquiler();
+		for (Cliente c1 : clientes) {
+
+				c1.mostrarCliente();
 			
 		}
 		
-		System.out.println("Dime el nombre de cliente que deseas ver");
-		String nombreCliente = sc.nextLine();
+		System.out.println("Dime el DNI del cliente: ");
+		String dniCliente = sc.nextLine();
 		
 		for (Cliente c2 : clientes) {
 			
-			if (c2.getNombre().equals(nombreCliente)) {
+			if (c2.getDNI().equalsIgnoreCase(dniCliente)) {
 				
 				c2.mostrarCliente();
 				return c2;
+				
+			}
+			
+		}
+		
+		return null;
+	}
+	
+	public static Videojuego elegirVideojuego () {
+		
+		ArrayList<Videojuego> videojuegos = GestionVideojuego.getVideojuegos();
+		Scanner sc = new Scanner (System.in);
+		
+		for (Videojuego j1 : videojuegos) {
+
+				j1.mostrarVideojuego();
+			
+		}
+		
+		System.out.println("Dime el codigo del juego: ");
+		String codUsuario = sc.nextLine();
+		
+		for (Videojuego j2 : videojuegos) {
+			
+			if (j2.getCodJuego().equalsIgnoreCase(codUsuario)) {
+				
+				j2.mostrarVideojuego();
+				return j2;
 				
 			}
 			
