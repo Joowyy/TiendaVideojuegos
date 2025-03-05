@@ -47,7 +47,6 @@ public class Tienda {
 		Scanner sc = new Scanner(System.in);
 		ArrayList<Videojuego> videojuegos = GestionVideojuego.getVideojuegos();
 		ArrayList<Cliente> clientes = GestionCliente.getClientes();
-		char vipUsuario;
 		boolean alquilerAñadido = false;
 
 		while (alquilerAñadido != true) {
@@ -57,139 +56,61 @@ public class Tienda {
 
 			if (respuesta == 'y') {
 
-				System.out.println("\nDebemos recopilar algo de información personales antes que nada\nProporcionanos la siguiente informacion ->");
-				System.out.println("\n¿Pagarás por el VIP? y/n");
-				vipUsuario = sc.nextLine().charAt(0);
+				System.out.println("Estos son los videojuegos actualmente en stock -> ");
 
-				if (vipUsuario == 'y' ) {
+				for (Videojuego j1 : videojuegos) {
 
-					System.out.println("Estos son los videojuegos actualmente en stock -> ");
+					if (j1.getStock() == true) {
 
-					for (Videojuego j1 : videojuegos) {
+						j1.mostrarVideojuego();
 
-						if (j1.getStock() == true) {
+					}
 
-							j1.mostrarVideojuego();
+				}
+
+				System.out.println("¿Cuanto costará el alquier?");
+				double alquilerCosto = sc.nextDouble();
+				sc.nextLine();
+				
+				if (alquilerCosto <= 0) {
+					
+					System.out.println("Introduce un alquiler positivo bolo.\n");
+					break;
+					
+				}
+				
+				System.out.println("Dime el codigo del juego que quieres alquilar -> ");
+				String codUsuario = sc.nextLine();
+
+				for (Cliente c1 : clientes) {
+
+					c1.mostrarCliente();
+
+				}
+
+				System.out.println("\nDime el DNI del cliente que va a alquilar el juego");
+				String dniUsuario = sc.nextLine();
+
+				for (Cliente c2 : clientes) {
+
+					for (Videojuego j2 : videojuegos) {
+
+						if (j2.getCodJuego().equals(codUsuario)) {
+
+							j2.setStock(false);
+							alquilerAñadido = true;
+							break;
+
+						}
+
+						if (c2.getDNI().equalsIgnoreCase(dniUsuario)) {
+
+							Alquiler alquilerNuevo = new Alquiler(String.valueOf(alquileres.size() + 1), c2, alquilerCosto, j2);
+							alquileres.add(alquilerNuevo);
 
 						}
 
 					}
-
-					System.out.println("¿Cuanto costará el alquier?");
-					double alquilerCosto = sc.nextDouble();
-					sc.nextLine();
-					System.out.println("Dime el codigo del juego que quieres alquilar -> ");
-					String codUsuario = sc.nextLine();
-
-					for (Cliente c1 : clientes) {
-
-						c1.mostrarCliente();
-
-					}
-
-					System.out.println("\nDime el DNI del cliente que va a alquilar el juego");
-					String dniUsuario = sc.nextLine();
-
-					for (Cliente c2 : clientes) {
-
-						for (Videojuego j2 : videojuegos) {
-
-							if (j2.getCodJuego().equals(codUsuario)) {
-
-								j2.setStock(false);
-								alquilerAñadido = true;
-								break;
-
-							} else {
-
-								System.out.println("No existe ese codigo\n");
-
-							}
-
-
-
-							if (c2.getDNI().equalsIgnoreCase(dniUsuario)) {
-
-								Alquiler alquilerNuevo = new Alquiler(String.valueOf(alquileres.size() + 1), c2, alquilerCosto, j2);
-								alquileres.add(alquilerNuevo);
-
-							} else {
-
-								System.out.println("Introduce un DNI válido.");
-								break;
-
-							}
-
-						}
-
-					}
-
-				} else if (vipUsuario == 'n') {
-
-					System.out.println("Estos son los videojuegos actualmente en stock -> ");
-
-					for (Videojuego j1 : videojuegos) {
-
-						if (j1.getStock() == true) {
-
-							j1.mostrarVideojuego();
-
-						}
-
-					}
-
-					System.out.println("¿Cuanto costará el alquier?");
-					double alquilerCosto = sc.nextDouble();
-					sc.nextLine();
-					System.out.println("Dime el codigo del juego que quieres alquilar -> ");
-					String codUsuario = sc.nextLine();
-
-					for (Cliente c1 : clientes) {
-
-						c1.mostrarCliente();
-
-					}
-
-					System.out.println("\nDime el DNI del cliente que va a alquilar el juego");
-					String dniUsuario = sc.nextLine();
-
-					for (Cliente c2 : clientes) {
-
-						for (Videojuego j2 : videojuegos) {
-
-							if (j2.getCodJuego().equals(codUsuario)) {
-
-								j2.setStock(false);
-								alquilerAñadido = true;
-								break;
-
-							} else {
-
-								System.out.println("No existe ese codigo\n");
-
-							}
-
-
-
-							if (c2.getDNI().equalsIgnoreCase(dniUsuario)) {
-
-								Alquiler alquilerNuevo = new Alquiler(String.valueOf(alquileres.size() + 1), c2, alquilerCosto, j2);
-								alquileres.add(alquilerNuevo);
-
-							} else {
-
-								System.out.println("Introduce un DNI válido.");
-								break;
-
-							}
-
-						}
-
-					}
-
-				} else {
-
-					System.out.println();
 
 				}
 
@@ -216,15 +137,15 @@ public class Tienda {
 		System.out.println("Alquileres -> " + alquileres + "\n");
 
 	}
-	
+
 	public void mostrarTodoAlquileres () {
-		
+
 		for (Alquiler a1 : alquileres) {
-			
+
 			a1.mostrarAlquiler();
-			
+
 		}
-		
+
 	}
 
 	public static Tienda crearTienda () {
