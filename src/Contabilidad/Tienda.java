@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import Alquiler.Alquiler;
 import Alquiler.Videojuego;
+import Gestion.GestionCliente;
+import Gestion.GestionVideojuego;
 import Usuario.Cliente;
 import Usuario.Normal;
 import Usuario.VIP;
@@ -59,8 +61,8 @@ public class Tienda {
 	
 	public static Tienda crearTienda () {
 		
-		ArrayList<Cliente> clientes = new ArrayList<Cliente>();
-		ArrayList<Videojuego> videojuegos = new ArrayList<Videojuego>();
+		ArrayList<Cliente> clientes = GestionCliente.getClientes();
+		ArrayList<Videojuego> videojuegos = GestionVideojuego.getVideojuegos();
 		
 //		CREAMOS LOS CLIENTES
 		clientes.add(new Normal("4583KRN", "Francisco", 0.0, "francisco3242@example.com"));

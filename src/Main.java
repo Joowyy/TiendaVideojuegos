@@ -1,7 +1,9 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import Alquiler.Alquiler;
 import Contabilidad.Tienda;
+import Gestion.GestionCliente;
 import Usuario.Cliente;
 
 public class Main {
@@ -15,7 +17,7 @@ public class Main {
 
 		do {
 			
-			System.out.println("BIENVENIDO A JOWY's\n1. Mostrar tienda\n2. Añadir alquiler\n3. Ingresar saldo\n4. Retirar saldo");
+			System.out.println("BIENVENIDO A JOWY's\n1. Mostrar tienda\n2. Añadir alquiler\n3. Ingresar saldo\n4. Retirar saldo\n5. Ver cliente");
 			
 			switch (opc = sc.nextLine().charAt(0)) {
 			
@@ -40,6 +42,7 @@ public class Main {
 				
 			case '5':
 				
+				Cliente clienteSeleccionado = elegirCliente(tiendaJowy);
 				break;
 				
 			default:
@@ -52,8 +55,9 @@ public class Main {
 		
 	}
 	
-	public static Alquiler elegirCliente (Tienda tiendaJowy) {
+	public static Cliente elegirCliente (Tienda tiendaJowy) {
 		
+		ArrayList<Cliente> clientes = GestionCliente.getClientes();
 		Scanner sc = new Scanner (System.in);
 		
 		for (Alquiler a1 : tiendaJowy.getAlquileres()) {
@@ -65,11 +69,12 @@ public class Main {
 		System.out.println("Dime el nombre de cliente que deseas ver");
 		String nombreCliente = sc.nextLine();
 		
-		for (Alquiler a2 : tiendaJowy.getAlquileres()) {
+		for (Cliente c2 : clientes) {
 			
-			if (a2.getcliente().equals(nombreCliente)) {
+			if (c2.getNombre().equals(nombreCliente)) {
 				
-				
+				c2.mostrarCliente();
+				return c2;
 				
 			}
 			

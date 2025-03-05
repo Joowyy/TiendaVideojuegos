@@ -27,6 +27,11 @@ public class Normal extends Cliente {
 	@Override
 	public void mostrarCliente () {
 		
+		System.out.println("\nDNI -> " + DNI);
+		System.out.println("Nombre -> " + nombre);
+		System.out.println("Saldo -> " + saldoCuenta);
+		System.out.println("Correo -> " + email + "\n");
+		
 	}
 	
 	@Override

@@ -26,6 +26,11 @@ public class VIP extends Cliente {
 	@Override
 	public void mostrarCliente () {
 		
+		System.out.println("\nDNI -> " + DNI);
+		System.out.println("Nombre -> " + nombre);
+		System.out.println("Saldo -> " + saldoCuenta);
+		System.out.println("Promocion -> " + promociones + "\n");
+		
 	}
 	
 	@Override
