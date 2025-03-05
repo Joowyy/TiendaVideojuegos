@@ -18,7 +18,7 @@ public class Main {
 
 		do {
 			
-			System.out.println("BIENVENIDO A JOWY's\n1. Mostrar tienda\n2. Añadir alquiler\n3. Ingresar saldo\n4. Retirar saldo\n5. Ver cliente\n6. Ver videojuegos");
+			System.out.println("BIENVENIDO A JOWY's\n1. Mostrar tienda\n2. Añadir alquiler\n3. Ingresar saldo\n4. Retirar saldo\n5. Ver cliente\n6. Ver videojuegos\n7. Ver alquileres");
 			
 			switch (opc = sc.nextLine().charAt(0)) {
 			
@@ -48,7 +48,12 @@ public class Main {
 				
 			case '6':
 				
-				Videojuego videojuegoSeleccionado = elegirVideojuego();
+				Videojuego videojuegoSeleccionado6 = elegirVideojuego();
+				break;
+				
+			case '7':
+				
+				tiendaJowy.mostrarTodoAlquileres();
 				break;
 				
 			default:
