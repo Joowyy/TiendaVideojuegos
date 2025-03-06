@@ -72,13 +72,18 @@ public class Main {
 				tiendaJowy.mostrarTodoAlquileres();
 				break;
 				
+			case '9':
+				
+				System.out.println("Saliendo del programa...");
+				break;
+				
 			default:
 				
 				System.out.println("Introduce un caracter válido.\n");
 				
 			}
 			
-		} while (opc != 7);
+		} while (opc != 9);
 		
 	}
 	
