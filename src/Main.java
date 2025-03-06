@@ -36,12 +36,15 @@ public class Main {
 				
 			case '3':
 				
+				Cliente clienteElegido3 = elegirCliente();
+				clienteElegido3.incrementarSaldoCuenta();
 				
 				break;
 				
 			case '4':
 				
-				
+				Cliente clienteElegido4 = elegirCliente();
+				clienteElegido4.disminuirSaldoCuenta();
 				break;
 				
 			case '5':
@@ -92,7 +95,7 @@ public class Main {
 			case 'x':
 				
 				System.out.println("Saliendo del programa...");
-				break;
+				continue;
 				
 			default:
 				
@@ -115,19 +118,19 @@ public class Main {
 			
 		}
 		
-//		System.out.println("Dime el DNI del cliente: ");
-//		String dniCliente = sc.nextLine();
-//		
-//		for (Cliente c2 : clientes) {
-//			
-//			if (c2.getDNI().equalsIgnoreCase(dniCliente)) {
-//				
-//				c2.mostrarCliente();
-//				return c2;
-//				
-//			}
-//			
-//		}
+		System.out.println("Dime el DNI del cliente: ");
+		String dniCliente = sc.nextLine();
+		
+		for (Cliente c2 : clientes) {
+			
+			if (c2.getDNI().equalsIgnoreCase(dniCliente)) {
+				
+				c2.mostrarCliente();
+				return c2;
+				
+			}
+			
+		}
 		
 		return null;
 	}

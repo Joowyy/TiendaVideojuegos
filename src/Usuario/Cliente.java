@@ -5,6 +5,7 @@ import java.util.Scanner;
 public abstract class Cliente {
 
 //	=========================== ATRIBUTOS ===========================
+	private Scanner sc = new Scanner (System.in);
 	protected String DNI;
 	protected String nombre;
 	protected double saldoCuenta;
@@ -42,32 +43,50 @@ public abstract class Cliente {
 	}
 	
 //	=========================== METODOS ===========================
-	public void disminuirSaldoCuenta() {
-		
-		Scanner sc = new Scanner (System.in);
-		boolean pagado = false;
-		
-		while (pagado != true) {
-		
-			System.out.println("Cuanto dinero deseas introducir");
-			double saldoUsuario = sc.nextDouble();
-			
-//			CORRECCION DE ERROR
-			if (saldoUsuario <= 0) {
-				
-				System.out.println("No puedes agregar un saldo negativo bolo!");
-				
-			} else {
-				
-				this.saldoCuenta += saldoUsuario;
-				
-			}
-		
-		}
-		
-	}
+    public boolean disminuirSaldoCuenta() {
+        boolean pagado = false;
+
+        while (!pagado) {
+            System.out.println("¿Cuánto dinero deseas retirar?");
+            double saldoUsuario = sc.nextDouble();
+
+            if (saldoUsuario <= 0) {
+            	
+                System.out.println("No puedes retirar un saldo negativo, bolo!");
+                
+            } else if (saldoUsuario > this.saldoCuenta) {
+            	
+                System.out.println("No puedes retirar más de lo que tienes!\n");
+                
+            } else {
+            	
+                this.saldoCuenta -= saldoUsuario;
+                System.out.println("Dinero retirado correctamente!\n");
+                pagado = true; // Salimos del bucle
+                
+            }
+            
+        }
+        
+        return pagado;
+    }
 	
 	public void incrementarSaldoCuenta() {
+		
+		System.out.println("Cuanto dinero deseas introducir");
+		double saldoUsuario = sc.nextDouble();
+
+//		CORRECCION DE ERROR
+		if (saldoUsuario <= 0) {
+
+			System.out.println("No puedes agregar un saldo negativo bolo!");
+
+		} else {
+
+			this.saldoCuenta = this.saldoCuenta + saldoUsuario;
+			System.out.println("Dinero ingresado correctamente!\n");
+
+		}
 		
 	}
 	
