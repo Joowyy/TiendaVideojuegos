@@ -130,7 +130,72 @@ public class Tienda {
 		return alquilerAñadido;
 
 	}
+	
+	public void aplicarDescuentoVIP (int porcentaje) {
 
+		ArrayList<Cliente> clientes = GestionCliente.getClientes();
+		double nuevoPrecio = 0.0;
+		Scanner sc = new Scanner (System.in);
+
+		for (Cliente c1 : clientes) {
+
+//			'tieneAlquiler' es un metodo boolean que devuelve si ese cliente tiene o no alquileres
+			if (c1.getClass().getSimpleName().equals("VIP") && tieneAlquiler(c1, alquileres)) {
+
+				c1.mostrarCliente();
+
+			}
+
+		}
+
+		System.out.println("¿A quien deseas aplicar la promocion? Digame el DNI ->");
+		String dniUsuario = sc.nextLine();
+
+//		CHECKEO DE ERRORES
+		if (dniUsuario.length() >= 9 || dniUsuario.length() <= 0) {
+
+			System.out.println("Introduce un DNI válido");
+
+		}
+
+		for (Cliente c2 : clientes) {
+			
+			for (Alquiler a1 : alquileres) {
+				
+				if (c2.getDNI().equalsIgnoreCase(dniUsuario)) {
+				
+					a1.setPrecioAlquiler(a1.getPrecioAlquiler() * (porcentaje / 100));
+					nuevoPrecio = a1.getPrecioAlquiler();
+					
+					System.out.println(a1.getPrecioAlquiler());
+
+				}
+				
+			}
+			
+		}
+		
+//		System.out.println("Promocion aplicada correctamente");
+//		System.out.println("El precio se quedará en -> " + nuevoPrecio);
+
+	}
+
+//	Metodo para ver quien tiene algun alquiler
+	public boolean tieneAlquiler(Cliente cliente, ArrayList<Alquiler> alquileres) {
+	    
+		for (Alquiler a : alquileres) {
+	        
+			if (a.getCliente().equals(cliente)) {
+	        	
+	        	return true;
+	        
+	        }
+	    
+		}
+	    
+		return false;
+	}
+	
 	public void mostrarTienda () {
 
 		System.out.println("\nNombre -> " + nombreTienda);
@@ -153,7 +218,7 @@ public class Tienda {
 		ArrayList<Cliente> clientes = GestionCliente.getClientes();
 		ArrayList<Videojuego> videojuegos = GestionVideojuego.getVideojuegos();
 
-		//		CREAMOS LOS CLIENTES
+//		CREAMOS LOS CLIENTES
 		clientes.add(new Normal("3489348O", "Francisco", 0.0, "francisco3242@example.com"));
 		clientes.add(new Normal("2394394H", "Maria", 0.0, "mariasanchez5@example.com"));
 		clientes.add(new Normal("9348289W", "Juan", 0.0, "juandedios777@example.com"));
@@ -170,7 +235,7 @@ public class Tienda {
 		clientes.add(new VIP("4857385E", "Mario", 0.0, "10% en alquileres"));
 		clientes.add(new VIP("9378573J", "Miguel", 0.0, "VIPGOLD-2024"));
 
-		//		CREAMOS LOS VIDEJUEGOS
+//		CREAMOS LOS VIDEJUEGOS
 		for (int j = 0; j < 15; j++) {
 			if (j == 0) {
 				videojuegos.add(new Videojuego(String.valueOf(j), "The Legend of Zelda", false));
@@ -229,17 +294,17 @@ public class Tienda {
 				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 12.67, videojuegos.get(k)));
 			}
 			if (k == 7) {
-				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 9.99, videojuegos.get(k)));
+				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k + 1), 9.99, videojuegos.get(k)));
 			}
 			if (k == 8) {
-				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 31.19, videojuegos.get(k)));
+				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k + 1), 31.19, videojuegos.get(k)));
 			}
 			if (k == 9) {
-				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k), 18.23, videojuegos.get(k)));
+				alquileres.add(new Alquiler(String.valueOf(k), clientes.get(k + 3), 18.23, videojuegos.get(k)));
 			}
 		}
 
-		//		CREAMOS LA TIENDA
+//		CREAMOS LA TIENDA
 		Tienda tiendaCreada = new Tienda("Jowy's RuneShop", alquileres);
 
 		return tiendaCreada;

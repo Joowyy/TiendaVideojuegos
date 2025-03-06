@@ -31,7 +31,7 @@ public class Alquiler {
 		this.codAlquiler = codAlquiler;
 	}
 	
-	public Cliente getcliente() {
+	public Cliente getCliente() {
 		return cliente;
 	}
 	public void setCliente(Cliente cliente) {

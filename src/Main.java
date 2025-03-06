@@ -18,7 +18,7 @@ public class Main {
 
 		do {
 			
-			System.out.println("BIENVENIDO A JOWY's\n1. Mostrar tienda\n2. Añadir alquiler\n3. Ingresar saldo\n4. Retirar saldo\n5. Ver cliente\n6. Ver videojuegos\n7. Ver alquileres");
+			System.out.println("BIENVENIDO A JOWY's\n1. Mostrar tienda\n2. Añadir alquiler\n3. Ingresar saldo\n4. Retirar saldo\n5. Aplicar descuentos\n6. Ver cliente\n7. Ver videojuegos\n8. Ver alquileres");
 			
 			switch (opc = sc.nextLine().charAt(0)) {
 			
@@ -43,15 +43,29 @@ public class Main {
 				
 			case '5':
 				
-				Cliente clienteSeleccionado5 = elegirCliente();
+				System.out.println("¿De cuanto será el descuento?");
+				int porcentaje = sc.nextInt();
+				
+				if (porcentaje <= 0 || porcentaje >= 100) {
+					
+					System.out.println("Introduce un porcentaje válido bolo.");
+					
+				}
+				
+				tiendaJowy.aplicarDescuentoVIP(porcentaje);
 				break;
 				
 			case '6':
 				
-				Videojuego videojuegoSeleccionado6 = elegirVideojuego();
+				Cliente clienteSeleccionado5 = elegirCliente();
 				break;
 				
 			case '7':
+				
+				Videojuego videojuegoSeleccionado6 = elegirVideojuego();
+				break;
+				
+			case '8':
 				
 				tiendaJowy.mostrarTodoAlquileres();
 				break;
@@ -76,20 +90,20 @@ public class Main {
 				c1.mostrarCliente();
 			
 		}
-		
-		System.out.println("Dime el DNI del cliente: ");
-		String dniCliente = sc.nextLine();
-		
-		for (Cliente c2 : clientes) {
-			
-			if (c2.getDNI().equalsIgnoreCase(dniCliente)) {
-				
-				c2.mostrarCliente();
-				return c2;
-				
-			}
-			
-		}
+//		
+//		System.out.println("Dime el DNI del cliente: ");
+//		String dniCliente = sc.nextLine();
+//		
+//		for (Cliente c2 : clientes) {
+//			
+//			if (c2.getDNI().equalsIgnoreCase(dniCliente)) {
+//				
+//				c2.mostrarCliente();
+//				return c2;
+//				
+//			}
+//			
+//		}
 		
 		return null;
 	}
@@ -105,19 +119,19 @@ public class Main {
 			
 		}
 		
-		System.out.println("Dime el codigo del juego: ");
-		String codUsuario = sc.nextLine();
+		//System.out.println("Dime el codigo del juego: ");
+		//String codUsuario = sc.nextLine();
 		
-		for (Videojuego j2 : videojuegos) {
-			
-			if (j2.getCodJuego().equalsIgnoreCase(codUsuario)) {
-				
-				j2.mostrarVideojuego();
-				return j2;
-				
-			}
-			
-		}
+//		for (Videojuego j2 : videojuegos) {
+//			
+//			if (j2.getCodJuego().equalsIgnoreCase(codUsuario)) {
+//				
+//				j2.mostrarVideojuego();
+//				return j2;
+//				
+//			}
+//			
+//		}
 		
 		return null;
 	}
