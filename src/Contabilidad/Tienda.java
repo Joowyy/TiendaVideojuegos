@@ -134,6 +134,41 @@ public class Tienda {
 
 	}
 	
+	public boolean borrarAlquiler () {
+		
+		ArrayList<Cliente> clientes = GestionCliente.getClientes();
+		boolean alquilerBorrado = false;
+		Scanner sc = new Scanner (System.in);
+		
+		for (Cliente c1 : clientes) {
+			
+			c1.mostrarCliente();
+			
+		}
+		
+		do {
+
+			System.out.println("Estos son los alquileres actuales");
+			System.out.println("Dime el DNI del que deseas borrar ->");
+			String dniUsuario = sc.nextLine();
+
+			if (dniUsuario.length() != 8) {
+
+				System.out.println("Introduce un DNI válido");
+
+			} else {
+
+				System.out.println("Alquiler eliminado correctamente!\n");
+				alquileres.removeIf(Cliente -> Cliente.getCliente().getDNI().equals(dniUsuario));
+				alquilerBorrado = true;
+
+			}
+
+		} while (!alquilerBorrado);
+		
+		return true;
+	}
+	
 	public void aplicarDescuentoVIP (double porcentaje) {
 
 		DecimalFormat df = new DecimalFormat ("#.##");
@@ -230,6 +265,63 @@ public class Tienda {
 
 		}
 
+	}
+	
+	public void mostrarAlquilerCliente () {
+		
+		ArrayList<Cliente> clientes = GestionCliente.getClientes();
+		Scanner sc = new Scanner (System.in);
+		Cliente clienteElegido = null;
+		
+		for (Cliente c1 : clientes) {
+			
+			c1.mostrarCliente();
+
+		}
+		
+		System.out.println("Dime el DNI del cliente a mostrar ->");
+		String dniCliente = sc.nextLine();
+		
+		for (Cliente c2 : clientes) {
+			
+			if (c2.getDNI().equalsIgnoreCase(dniCliente)) {
+				
+				clienteElegido = c2;
+				
+			}
+
+		}
+		
+		if (dniCliente.length() != 8) {
+			
+			System.out.println("Introduce un DNI válido bolo.");
+			
+		} else {
+			
+			for (Alquiler a1 : alquileres) {
+				
+				if (a1.getCliente().getDNI().equalsIgnoreCase(dniCliente)) {
+				
+					a1.mostrarAlquiler();
+				
+				}
+				
+			}
+			
+			if (!alquileres.contains(clienteElegido)) {
+				
+				System.out.println("El cliente no tiene nada alquilado.");
+				
+			}
+			
+			if (!clienteElegido.equals(dniCliente)) {
+				
+				System.out.println("Introduce un DNI válido bolo!\n");
+				
+			}
+			
+		}
+		
 	}
 
 	public static Tienda crearTienda () {

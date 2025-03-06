@@ -13,23 +13,25 @@ public class Main {
 
 		Scanner sc = new Scanner (System.in);
 		Tienda tiendaJowy = Tienda.crearTienda();
+		ArrayList<Cliente> clientes = GestionCliente.getClientes();
+		ArrayList<Videojuego> videojuegos = GestionVideojuego.getVideojuegos();
 
 		char opc;
 
 		do {
 			
-			System.out.println("BIENVENIDO A JOWY's\n1. Mostrar tienda\n2. Añadir alquiler\n3. Ingresar saldo\n4. Retirar saldo\n5. Aplicar descuentos\n6. Ver cliente\n7. Ver videojuegos\n8. Ver alquileres");
+			System.out.println("BIENVENIDO A JOWY's\n1. Añadir alquiler\n2. Borrar alquiler\n3. Ingresar saldo\n4. Retirar saldo\n5. Aplicar descuentos\n6. Ver cliente\n7. Ver videojuegos\n8. Ver alquileres\n9. Mostrar alquiler de cliente\nX. Salir");
 			
 			switch (opc = sc.nextLine().charAt(0)) {
 			
 			case '1':
 				
-				tiendaJowy.mostrarTienda();
+				tiendaJowy.añadirAlquiler();
 				break;
 				
 			case '2':
 				
-				tiendaJowy.añadirAlquiler();
+				tiendaJowy.borrarAlquiler();
 				break;
 				
 			case '3':
@@ -38,6 +40,7 @@ public class Main {
 				break;
 				
 			case '4':
+				
 				
 				break;
 				
@@ -59,12 +62,21 @@ public class Main {
 				
 			case '6':
 				
-				Cliente clienteSeleccionado5 = elegirCliente();
+				for (Cliente c1 : clientes) {
+					
+					c1.mostrarCliente();
+					
+				}
 				break;
 				
 			case '7':
 				
-				Videojuego videojuegoSeleccionado6 = elegirVideojuego();
+				for (Videojuego j1 : videojuegos) {
+					
+					j1.mostrarVideojuego();
+					
+				}
+				
 				break;
 				
 			case '8':
@@ -73,6 +85,11 @@ public class Main {
 				break;
 				
 			case '9':
+				
+				tiendaJowy.mostrarAlquilerCliente();
+				break;
+				
+			case 'x':
 				
 				System.out.println("Saliendo del programa...");
 				break;
@@ -97,7 +114,7 @@ public class Main {
 				c1.mostrarCliente();
 			
 		}
-//		
+		
 //		System.out.println("Dime el DNI del cliente: ");
 //		String dniCliente = sc.nextLine();
 //		
@@ -115,32 +132,4 @@ public class Main {
 		return null;
 	}
 	
-	public static Videojuego elegirVideojuego () {
-		
-		ArrayList<Videojuego> videojuegos = GestionVideojuego.getVideojuegos();
-		Scanner sc = new Scanner (System.in);
-		
-		for (Videojuego j1 : videojuegos) {
-
-				j1.mostrarVideojuego();
-			
-		}
-		
-		//System.out.println("Dime el codigo del juego: ");
-		//String codUsuario = sc.nextLine();
-		
-//		for (Videojuego j2 : videojuegos) {
-//			
-//			if (j2.getCodJuego().equalsIgnoreCase(codUsuario)) {
-//				
-//				j2.mostrarVideojuego();
-//				return j2;
-//				
-//			}
-//			
-//		}
-		
-		return null;
-	}
-
 }
