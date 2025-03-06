@@ -1,5 +1,6 @@
 package Contabilidad;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -90,25 +91,27 @@ public class Tienda {
 
 				System.out.println("\nDime el DNI del cliente que va a alquilar el juego");
 				String dniUsuario = sc.nextLine();
+				Videojuego juegoElegido = null;
+				
+				for (Videojuego j2 : videojuegos) {
+					
+					if (j2.getCodJuego().equals(codUsuario)) {
 
+						juegoElegido = j2;
+						j2.setStock(false);
+						alquilerAñadido = true;
+						break;
+
+					}
+					
+				}
+				
 				for (Cliente c2 : clientes) {
 
-					for (Videojuego j2 : videojuegos) {
+					if (c2.getDNI().equalsIgnoreCase(dniUsuario)) {
 
-						if (j2.getCodJuego().equals(codUsuario)) {
-
-							j2.setStock(false);
-							alquilerAñadido = true;
-							break;
-
-						}
-
-						if (c2.getDNI().equalsIgnoreCase(dniUsuario)) {
-
-							Alquiler alquilerNuevo = new Alquiler(String.valueOf(alquileres.size() + 1), c2, alquilerCosto, j2);
-							alquileres.add(alquilerNuevo);
-
-						}
+						Alquiler alquilerNuevo = new Alquiler(String.valueOf(alquileres.size() + 1), c2, alquilerCosto, juegoElegido);
+						alquileres.add(alquilerNuevo);
 
 					}
 
@@ -131,8 +134,9 @@ public class Tienda {
 
 	}
 	
-	public void aplicarDescuentoVIP (int porcentaje) {
+	public void aplicarDescuentoVIP (double porcentaje) {
 
+		DecimalFormat df = new DecimalFormat ("#.##");
 		ArrayList<Cliente> clientes = GestionCliente.getClientes();
 		double nuevoPrecio = 0.0;
 		Scanner sc = new Scanner (System.in);
@@ -148,35 +152,50 @@ public class Tienda {
 
 		}
 
+		Cliente clienteElegido = null;
 		System.out.println("¿A quien deseas aplicar la promocion? Digame el DNI ->");
 		String dniUsuario = sc.nextLine();
 
 //		CHECKEO DE ERRORES
-		if (dniUsuario.length() >= 9 || dniUsuario.length() <= 0) {
+		if (dniUsuario.length() != 8) {
 
 			System.out.println("Introduce un DNI válido");
+			return;
 
 		}
 
 		for (Cliente c2 : clientes) {
 			
-			for (Alquiler a1 : alquileres) {
+			if (c2.getDNI().equalsIgnoreCase(dniUsuario)) {
 				
-				if (c2.getDNI().equalsIgnoreCase(dniUsuario)) {
-				
-					a1.setPrecioAlquiler(a1.getPrecioAlquiler() * (porcentaje / 100));
-					nuevoPrecio = a1.getPrecioAlquiler();
-					
-					System.out.println(a1.getPrecioAlquiler());
+				clienteElegido = c2;
+				break;
 
-				}
+			}
+
+		}
+		
+		boolean promoAplicada = false;
+		for (Alquiler a1 : alquileres) {
+			
+//			Tiene un atributo Cliente que permite asignar uno.
+			if (a1.getCliente().equals(clienteElegido)) {
+				
+				a1.setPrecioAlquiler(a1.getPrecioAlquiler() * (1 - (porcentaje / 100.0)));
+				nuevoPrecio = a1.getPrecioAlquiler();
+				System.out.println("El precio se quedará en -> " + df.format(nuevoPrecio) + "\n");
+				promoAplicada = true;
+				break;
 				
 			}
 			
 		}
 		
-//		System.out.println("Promocion aplicada correctamente");
-//		System.out.println("El precio se quedará en -> " + nuevoPrecio);
+		if (!promoAplicada) {
+			
+			System.out.println("El cliente no tiene alquileres\n");
+			
+		}
 
 	}
 

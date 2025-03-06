@@ -44,11 +44,13 @@ public class Main {
 			case '5':
 				
 				System.out.println("¿De cuanto será el descuento?");
-				int porcentaje = sc.nextInt();
+				double porcentaje = sc.nextInt();
+				sc.nextLine();
 				
 				if (porcentaje <= 0 || porcentaje >= 100) {
 					
-					System.out.println("Introduce un porcentaje válido bolo.");
+					System.out.println("Introduce un porcentaje válido bolo.\n");
+					continue;
 					
 				}
 				
